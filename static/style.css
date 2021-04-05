@@ -1,0 +1,35 @@
+@media only screen and (max-width: 600px) {
+#small-hide, tr td:nth-child(2) { display:none; visibility:hidden; }
+}
+
+#home-buttons {
+  max-width: 400px !important;
+  padding-left: 20px !important;
+}
+
+.table-hover {
+  max-width: 800px;
+}
+
+.table { max-width: 800px }
+
+.removable { max-width: 800px }
+
+.grayed-out { color: gray }
+
+#dont-hide { width: 40% }
+#small-hide { width: 40% }
+#dont-hide-button { width: 20% }
+
+.thumbnail {
+  padding: 30px;
+}
+
+.navbar {
+  border-radius: 0 !important;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus {
+  background-color: rgb(50,50,50) !important;
+  border-color: rgb(50,50,50) !important;
+  border-radius: 0 !important;
+}
