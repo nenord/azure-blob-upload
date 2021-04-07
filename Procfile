@@ -1,1 +1,1 @@
-web: gunicorn ibd_app:app
+web: gunicorn app:app
