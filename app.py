@@ -11,7 +11,10 @@ from werkzeug.utils import secure_filename
 
 
 class Config(object):
-    SECRET_KEY = 'hsahd&hjsak82836218hasjndksaj%hjdnfdskf8jnaskndsajgusa^6'
+    if os.environ.get('TEST'):
+        SECRET_KEY = 'hsahd&hjsak82836218hasjndksaj%hjdnfdskf8jnaskndsajgusa^6'
+    else:
+        SECRET_KEY = os.environ.get('SECRET_KEY')
 
 class UploadForm(FlaskForm):
     workspace_token = StringField('Upload string', validators=[DataRequired()])
