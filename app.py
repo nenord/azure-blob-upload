@@ -15,6 +15,7 @@ class Config(object):
         SECRET_KEY = 'hsahd&hjsak82836218hasjndksaj%hjdnfdskf8jnaskndsajgusa^6'
     else:
         SECRET_KEY = os.environ.get('SECRET_KEY')
+    SSL_REDIRECT = True if os.environ.get('DYNO') else False
 
 class UploadForm(FlaskForm):
     workspace_token = StringField('Upload string', validators=[DataRequired()])
@@ -24,6 +25,12 @@ class UploadForm(FlaskForm):
 app = Flask(__name__)
 app.config.from_object(Config)
 bootstrap = Bootstrap(app)
+if app.config['SSL_REDIRECT']:
+    from flask_sslify import SSLify
+    from werkzeug.middleware.proxy_fix import ProxyFix
+    sslify = SSLify(app)
+    app.wsgi_app = ProxyFix(app.wsgi_app)
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
