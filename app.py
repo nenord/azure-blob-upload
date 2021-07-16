@@ -42,9 +42,8 @@ def index():
         filename = secure_filename(f.filename)
 
         str_split=ws_token.split('/')
-        sas=str_split[4]
-        container_name=str_split[3]
-        account_name=str_split[2].split('.')[0]
+        sas=str_split[3].split('?')[1]
+        container_name=str_split[3].split('?')[0]
         account_url=str_split[0]+'//'+str_split[2]
 
         blob_service_client = BlobServiceClient(account_url=account_url, credential=sas)
